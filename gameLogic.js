@@ -185,6 +185,7 @@ function gameOver() {
   menuDiv.style.visibility = "visible";
   let myTime = document.getElementById("myTime");
   myTime.innerText = document.getElementById("timerSpan").innerText;
+  getHighScore(currentResult);
 }
 
 // Uklanja meni sa screena te ponovno pokreće igru
