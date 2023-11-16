@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab3 - Game</title>
+    <script src="gameLogic.js"></script>
+    <script src="keyPressEvents.js"></script>
+    <style>
+        canvas {
+            border:1px solid #000000;
+            background-color: #f1f1f1;
+        }
+
+        h3, h4 {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .menuDiv {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 40vh;
+            left: 40vw;
+            background-color: antiquewhite;
+            width: 20vw;
+            height: auto;
+            text-align: center;
+        }
+
+        #retryButton {
+            margin: 5px;
+        }
+
+        #timerDiv {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            width: 155px;
+            margin: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body onload="">
+    <!-- Menu na početku igre -->
+    <div id="menuDivStart" class="menuDiv">
+        <h4>Start game:</h4>
+        <button id="retryButton" onclick="retry(6);">Easy</button>
+        <button id="retryButton" onclick="retry(9);">Medium</button>
+        <button id="retryButton" onclick="retry(13);">Hard</button>
+        <button id="retryButton" onclick="retry(16);">Extreme</button>
+    </div>
+    <!-- Menu kada igrač izgubi -->
+    <div id="menuDivRetry" class="menuDiv" style="visibility: hidden">
+        <h4>Your time:</h4>
+        <h3><span id="myTime">0</span></h3>
+        <button id="retryButton" onclick="retry(6);">Easy</button>
+        <button id="retryButton" onclick="retry(9);">Medium</button>
+        <button id="retryButton" onclick="retry(13);">Hard</button>
+        <button id="retryButton" onclick="retry(16);">Extreme</button>
+    </div>
+    <!-- High score i trenutni score u gornjem-desnom rubu -->
+    <div id="timerDiv">
+        <p>Highscore: <span id="highscoreSpan">0</span></p>
+        <p>Time: <span id="timerSpan">0 </span></p>
+    </div>
+</body>
+</html>
