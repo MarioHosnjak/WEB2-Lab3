@@ -25,7 +25,6 @@ function startGame(highscore) {
     asteroids[i] = new asteroid(
       asteroidDimensions,
       asteroidDimensions,
-      "gray",
       spawnCoordinates[0],
       spawnCoordinates[1],
       randomNumber(11, true) - 5,
@@ -70,7 +69,7 @@ var myGameArea = {
 // Objekt asteroida
 // funkcija newPos() onemogućava asteroidu da izađe iz canvasa
 // Inspiracija preuzeta sa primjera iz predavanja
-function asteroid(width, height, color, x, y, speed_x, speed_y) {
+function asteroid(width, height, x, y, speed_x, speed_y) {
   // width == height == variable asteroidDimensions
   this.width = width;
   this.height = height;
@@ -80,11 +79,13 @@ function asteroid(width, height, color, x, y, speed_x, speed_y) {
   // Koordinate objekta na Canvasu, kod inicijalizacije uz sami rub Canvasa
   this.x = x;
   this.y = y;
+
+  this.color = randomGrayShade();
   // Prikazuje objekt na Canvasu
   this.update = function () {
     ctx = myGameArea.context;
     ctx.save();
-    ctx.fillStyle = color;
+    ctx.fillStyle = this.color;
     ctx.strokeStyle = "black";
     ctx.shadowBlur = 5;
     ctx.shadowColor = "black";
@@ -270,4 +271,10 @@ function spawnFunction() {
     y = randomNumber(window.innerHeight - asteroidDimensions - 25, false);
   }
   return [x, y];
+}
+
+function randomGrayShade() {
+  const shade = Math.floor(Math.random() * 256);
+  const color = `rgb(${shade}, ${shade}, ${shade})`;
+  return color;
 }
