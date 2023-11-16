@@ -203,9 +203,7 @@ function getHighScore(highscore) {
   if (typeof Storage !== "undefined") {
     if (localStorage.highscore) {
       let oldHS = localStorage.highscore;
-      if (highscore == undefined) {
-        localStorage.highscore = 0;
-      } else if (highscore > oldHS) {
+      if (highscore != undefined && highscore > oldHS) {
         localStorage.highscore = highscore;
       }
     } else {
